@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.action.extension" value="do"></constant>
+	<constant name="struts.multipart.maxSize" value="104857600"></constant>
+
+	<package name="default" namespace="/" extends="json-default">
+		<!-- 统计 图表 -->
+		<action name="char_*" class="com.baikang.action.DrilldownAction"
+			method="{1}">
+			<result name="json" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		<action name="upload" class="com.baikang.action.UploadAction"
+			method="uploadFile">
+			<result name="json" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		<action name="Temperature_*" class="com.baikang.action.TemperatureAction"
+			method="{1}">
+			<result name="json" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+
+	</package>
+</struts>

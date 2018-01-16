@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="HighCharts"
+  id="myeclipse.1493707934663"
+  context-root="/HighCharts"
+  j2ee-spec="5.0"
+  archive="HighCharts.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

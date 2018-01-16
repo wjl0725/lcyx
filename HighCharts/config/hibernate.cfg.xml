@@ -1,0 +1,18 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+		<!-- 其它配置文件 -->
+		<property name="show_sql">true</property>
+		<property name="hbm2ddl.auto">update</property>
+		<property name="hibernate.connection.release_mode">
+			after_transaction
+		</property>
+		<!-- 配置映射文件 -->
+		<mapping class="com.baikang.entity.Drilldown" />
+		<mapping class="com.baikang.entity.Temperature" />
+
+	</session-factory>
+</hibernate-configuration>
