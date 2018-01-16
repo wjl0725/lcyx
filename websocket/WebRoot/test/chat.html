@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script src="http://www.w3school.com.cn/jquery/jquery-1.11.1.min.js"></script>
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<title>在线群聊</title>
+<script type="text/javascript">
+    var timestamp=Date.parse(new Date());
+    var webSocket=new WebSocket("ws://127.0.0.1:8080/websocket/websocket/"+timestamp);
+    //var webSocket=new WebSocket("ws://127.0.0.1:8080/websocket/websocket/"+timestamp);
+ 
+    webSocket.onerror = function(event) {
+       alert(event.data);
+    };
+ 
+    webSocket.onopen = function(event) {
+      document.getElementById("list").innerHTML="连接建立成功！";
+    };
+ 
+    webSocket.onmessage = function(event) {
+      document.getElementById("list").innerHTML+="<br/>" + event.data;
+    };
+    
+    function sendMessage() {
+      var msg=document.getElementById("nickname").value+"："+document.getElementById("textarea").value;
+      document.getElementById("textarea").value="";
+      webSocket.send(msg);
+    }
+ </script>
+</head>
+<body>
+<div align="left" style="color: green" id="top">---------------消息记录----------------</div>
+<div align="left" id="list"></div>
+<div align="left" style="color: green" id="bottom">---------------消息记录----------------</div>
+<div align="left">
+      <textarea name="textarea" id="textarea" cols="45" rows="5"></textarea><br/>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+                  您的昵称：
+      <input width="10" type="text" name="nickname" id="nickname"/>
+      <input width="50" type="button" name="button" id="button" onclick="sendMessage()" value=" 发 送 " />
+      <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+</div>
+
+</body>
+
+</html>
